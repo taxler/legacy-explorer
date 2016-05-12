@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Legacy Explorer</title>
+  <script type='text/javascript'>
+    window.addEventListener('load', function() {
+      var dropzone = document.getElementById('dropzone');
+      dropzone.addEventListener('dragenter', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropzone.classList.add('dropping');
+      });
+      dropzone.addEventListener('dragleave', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropzone.classList.remove('dropping');
+      });
+      dropzone.addEventListener('dragexit', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropzone.classList.remove('dropping');
+      });
+      dropzone.addEventListener('dragover', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropzone.classList.add('dropping');
+      });
+      dropzone.addEventListener('drop', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropzone.classList.remove('dropping');
+        var files = e.dataTransfer.files;
+        console.log(files);
+      });
+    });
+  </script>
+  <style type='text/css'>
+    #dropzone {
+      border: 15px dashed silver;
+      width: 50%;
+      height: 50%;
+      left: auto;
+      top: auto;
+      position: fixed;
+    }
+    #dropzone.dropping {
+      background: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='dropzone'></div>
+</body>
+
+</html>
